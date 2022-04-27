@@ -1,0 +1,26 @@
+PK_ID_medio|int|0
+url|String|"www.elcalbucano.cl"
+nombre|String|"El Calbucano"
+ciudad|String|"Puerto Montt"
+-----------------------------
+#ID_medio|int|
+PK_url|String|elllanquihue.cl
+fecha_publicacion|Date|
+titulo|String|"https://www.elcalbucano.cl/2022/04/teleton-suma-nuevo-y-moderno-robot-para-rehabilitar-a-pacientes/"
+categoria|String|"Salud"
+contenido|String|
+-----------------------------
+PK_ID_Dueno|int|
+nombre|String|
+fecha_cargo|Date|
+Categoria|String|
+-----------------------------
+PK_ID_citados|int|
+nobre|String|
+wikipedia|Boolean|
+------------------------------
+PK_url_wiki|String|
+fecha_nacimiento|Date|
+profesion|String|
+nacionalidad|String|
+popularidad|int|
