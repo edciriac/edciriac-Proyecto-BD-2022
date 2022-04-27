@@ -2,25 +2,26 @@ PK_ID_medio|int|0
 url|String|"www.elcalbucano.cl"
 nombre|String|"El Calbucano"
 ciudad|String|"Puerto Montt"
+idioma|String|"Espanol"
 -----------------------------
-#ID_medio|int|
-PK_url|String|elllanquihue.cl
-fecha_publicacion|Date|
-titulo|String|"https://www.elcalbucano.cl/2022/04/teleton-suma-nuevo-y-moderno-robot-para-rehabilitar-a-pacientes/"
+#ID_medio|int|0
+PK_url|String|"https://www.elcalbucano.cl/2022/04/teleton-suma-nuevo-y-moderno-robot-para-rehabilitar-a-pacientes/"
+fecha_publicacion|Date|2022/4/17
+titulo|String|"TELETÓN SUMA NUEVO Y MODERNO ROBOT PARA REHABILITAR A PACIENTES"
 categoria|String|"Salud"
-contenido|String|
+contenido|String|"Se llama Andago y se utilizará..."
 -----------------------------
-PK_ID_Dueno|int|
-nombre|String|
-fecha_cargo|Date|
-Categoria|String|
+PK_ID_Dueno|int|0
+nombre|String|"Claudio Marquez Maragaño"
+fecha_cargo|Date|2005/4/1
+categoria|String|"Persona natural"
 -----------------------------
-PK_ID_citados|int|
-nobre|String|
-wikipedia|Boolean|
+PK_ID_citado|int|
+nobre|String|"Pedro Caro"
+wikipedia|Boolean|False
 ------------------------------
-PK_url_wiki|String|
-fecha_nacimiento|Date|
-profesion|String|
-nacionalidad|String|
-popularidad|int|
+PK_url_wiki|String|""
+fecha_nacimiento|Date|null
+profesion|String|""
+nacionalidad|String|""
+popularidad|int|0
