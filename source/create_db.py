@@ -19,7 +19,12 @@ result_noticia = insert_noticia("TELETÓN SUMA NUEVO Y MODERNO ROBOT PARA REHABI
                                 )
 print("Se insertó un noticia: ", result_noticia)
 
+# Por ahora no está conectado a ningún notoriedad
 result_citado = insert_citado("Pedro caro", [result_noticia.inserted_id])
 print("Se insertó un citado: ", result_citado)
+
+result_notoriedad = insert_notoriedad("https://es.wikipedia.org/wiki/Erling_Haaland", datetime.datetime(2000, 7, 21), 100, "Futbolista", "Noruego")
+print("Se insertó un notoriedad: ", result_notoriedad)
+
 
 print("Todos inserciónes se insertaron exitosamente. Terminando el programa...")
