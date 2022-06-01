@@ -6,7 +6,7 @@ import datetime
 result_dueno = insert_dueno("Claudio Marquez Maragaño", datetime.datetime(2005, 4, 1), "Persona natural")
 print("Se insertó un dueño: ", result_dueno)
 
-# Dueno ids (solo una) del resultado del inserción anterior
+# Dueno ids (solo una en este ejemplo pero puede ser varios) del resultado del inserción anterior
 result_medio = insert_medio("Chilevision", "www.elcalbucano.cl", "Puerto Montt", "Espanol", [result_dueno.inserted_id])
 print("Se insertó un medio: ", result_medio)
 
