@@ -35,5 +35,5 @@ with open(sql_file_path, 'r') as f:
   # Sacar comandos vacios
   sqlCommands = list(filter(lambda command: command.strip() != "", sqlCommands))
   for command in sqlCommands:
-    print("Executing command: \n" + command)
+    print("Ejecutando el comando: \n" + command)
     cursor.execute(command)
