@@ -39,5 +39,3 @@ with open(sql_file_path, 'r') as f:
   for command in sqlCommands:
     print("Executing command: \n" + command)
     cursor.execute(command)
-# query= f"INSERT INTO news (url,title,date,content) VALUES ('{URL}', '{title}', '{date}', '{text}')"
-# cur.execute(f"CREATE TABLE IF NOT EXISTS ")
