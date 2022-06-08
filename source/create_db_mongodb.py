@@ -1,4 +1,4 @@
-from insert_manual import *
+from insert_manual_mongodb import *
 import datetime
 
 # Usar los metodos de insert_manual para inicializar el base da datos
