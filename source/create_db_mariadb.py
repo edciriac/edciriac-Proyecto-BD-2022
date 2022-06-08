@@ -25,8 +25,6 @@ except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     sys.exit(1)
 
-print(conn)
-
 cursor = conn.cursor()
 
 # Ejecutar los comandos del archivo create_tables.sql
