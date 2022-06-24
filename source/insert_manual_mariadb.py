@@ -1,22 +1,36 @@
-from pymongo import MongoClient
+import mariadb
+import sys
 
-client = MongoClient("localhost", port=27017)
-db=client.info133_project
+# Conectarse a MariaDB para guardar los datos escrapeados
+try:
+    conn = mariadb.connect(
+        user="user",
+        password="password",
+        host="localhost",
+        port=3306,
+        database="project"
 
-result = db.dueno.insert_one({
-  "nombre": "hello",
-  "fecha": "eadaedw",
-  "categoria": "awdaw"
-})
+    )
+except mariadb.Error as e:
+    print(f"Error connecting to MariaDB Platform: {e}")
+    sys.exit(1)
+
+# Get Cursor
+cur = conn.cursor()
+
 
 def insert_dueno(nombre, fecha, categoria):
   raise NotImplementedError()
 
-def insert_medio(nombre, url, ciudad, idioma, dueno_ids):
-  raise NotImplementedError()
+def insert_medio(nombre, url, ciudad, idioma):
+  query= f"INSERT INTO Medios (nombre, url, ciudad, idioma) VALUES ('{nombre}', '{url}', '{ciudad}', '{idioma}')"
+  cur.execute(query)
+  conn.commit()
 
-def insert_noticia(titulo, url,  fecha, categoria, contenido, medio_id):
-  raise NotImplementedError()
+def insert_noticia(url,  fecha_publicacion,titulo, categoria, contenido, medio_id):
+  query= f"INSERT INTO Noticias (url,fecha_publicacion,titulo,categoria,contenido,medio_id) VALUES ('{url}', '{fecha_publicacion}', '{titulo}', '{categoria}', '{contenido}', '{medio_id}')"
+  cur.execute(query)
+  conn.commit()
 
 def insert_citado(nombre, noticia_ids, wikipedia_url = None):
   raise NotImplementedError()
