@@ -1,21 +1,4 @@
 import random
-from requests_html import HTMLSession
-from pymongo import MongoClient
-import time
-
-#Formatear las fechas
-def format_date(date):
-    return(date.split("T")[0])
-
-#Conexión a Mongo
-client = MongoClient("localhost", port=27017)
-db=client.info133_2022
-
-session = HTMLSession()
-
-## URL "SEED" que escrapear
-URL_SEED = "https://www.diarioloslagos.cl/categorias/noticias/regionales/page/"
-
 ## Simular que estamos utilizando un navegador web
 USER_AGENT_LIST = [
         "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
@@ -38,23 +21,3 @@ USER_AGENT_LIST = [
         "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
 ]
 headers = {'user-agent':random.choice(USER_AGENT_LIST) }
-
-## Analizar ("to parse") el contenido
-xpath_url="//article/a/@href"
-
-for i in range(1,3):
-    seed = URL_SEED+str(i)
-    print(seed)
-    response = session.get(seed,headers=headers)
-    print(response)
-    all_urls = response.html.xpath(xpath_url)
-
-    for url in all_urls:
-        print(url)
-        article_url = url
-
-        #Insert into mongo
-        news = {'url':article_url,'to_download':True}
-        result=db.urls.insert_one(news)
-
-    time.sleep(2)
