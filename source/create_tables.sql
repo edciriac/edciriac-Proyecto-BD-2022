@@ -8,21 +8,21 @@ DROP TABLE IF EXISTS Medios;
 DROP TABLE IF EXISTS Duenos;
 
 CREATE TABLE IF NOT EXISTS Medios(
-  url VARCHAR(100) PRIMARY KEY,
-  nombre VARCHAR(50) NOT NULL,
+  url VARCHAR(1000) PRIMARY KEY,
+  nombre VARCHAR(200) NOT NULL,
   ciudad VARCHAR(50) NOT NULL,
   idioma VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Duenos(
   id INT AUTO_INCREMENT PRIMARY KEY, 
-  nombre VARCHAR(20) NOT NULL,
+  nombre VARCHAR(100) NOT NULL,
   fecha_cargo DATE NOT NULL,
   categoria VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS MedioDuenoRelacion(
-  medio_url VARCHAR(100) NOT NULL,
+  medio_url VARCHAR(1000) NOT NULL,
   dueno_id INT NOT NULL,
   FOREIGN KEY (medio_url) REFERENCES Medios(url),
   FOREIGN KEY (dueno_id) REFERENCES Duenos(id),
@@ -30,33 +30,33 @@ CREATE TABLE IF NOT EXISTS MedioDuenoRelacion(
 );
 
 CREATE TABLE IF NOT EXISTS Noticias(
-  url VARCHAR(100) PRIMARY KEY,
+  url VARCHAR(1000) PRIMARY KEY,
   fecha_publicacion DATETIME NOT NULL,
   titulo MEDIUMTEXT NOT NULL,
-  categoria VARCHAR(20) NOT NULL,
+  categoria VARCHAR(50) NOT NULL,
   contenido MEDIUMTEXT NOT NULL,
-  medio_url VARCHAR(100) NOT NULL,
+  medio_url VARCHAR(1000) NOT NULL,
   FOREIGN KEY (medio_url) REFERENCES Medios(url)
 );
 
 CREATE TABLE IF NOT EXISTS Notoriedades(
-  url VARCHAR(100) PRIMARY KEY,
+  url VARCHAR(1000) PRIMARY KEY,
   fecha_nacimiento DATE NOT NULL,
   -- Es popularidad un INT o algún otro tipo?
   popularidad INT NOT NULL, 
-  profesion VARCHAR(20) NOT NULL,
-  nacionalidad VARCHAR(20) NOT NULL
+  profesion VARCHAR(50) NOT NULL,
+  nacionalidad VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Citados(
   id INT AUTO_INCREMENT PRIMARY KEY, 
-  nombre VARCHAR(50) NOT NULL,
-  notoriedad_url VARCHAR(100),
+  nombre VARCHAR(200) NOT NULL,
+  notoriedad_url VARCHAR(1000),
   FOREIGN KEY (notoriedad_url) REFERENCES Notoriedades(url)
 );
 
 CREATE TABLE IF NOT EXISTS NoticiaCitadoRelacion(
-  noticia_url VARCHAR(100) NOT NULL,
+  noticia_url VARCHAR(1000) NOT NULL,
   citado_id INT NOT NULL,
   FOREIGN KEY (noticia_url) REFERENCES Noticias(url),
   FOREIGN KEY (citado_id) REFERENCES Citados(id),
