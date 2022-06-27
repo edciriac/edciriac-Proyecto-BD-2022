@@ -105,9 +105,10 @@ for url in urls:
     ## Analizar el contenido
     title = response.html.xpath(xpath_title)[0].text
     date = format_date(response.html.xpath(xpath_date)[0])
+    print(date)
     list_p = response.html.xpath(xpath_text)
     #TODO: escrapear la categoria 
-    categoria = "" #response.html.xpath(xpath_categoria)
+    categoria = "Sin categoría" #response.html.xpath(xpath_categoria)
     text=""
     for p in list_p:
         content = p.text

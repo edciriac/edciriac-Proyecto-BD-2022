@@ -1,5 +1,7 @@
 import os
 import sys
+from datetime import datetime
+import locale 
 
 #Importar de la carpeta source
 current = os.path.dirname(os.path.realpath(__file__))
