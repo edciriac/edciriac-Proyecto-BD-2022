@@ -27,8 +27,8 @@ def insert_medio(nombre, url, ciudad, idioma):
   cur.execute(query)
   conn.commit()
 
-def insert_noticia(url,  fecha_publicacion,titulo, categoria, contenido, medio_id):
-  query= f"INSERT INTO Noticias (url,fecha_publicacion,titulo,categoria,contenido,medio_id) VALUES ('{url}', '{fecha_publicacion}', '{titulo}', '{categoria}', '{contenido}', '{medio_id}')"
+def insert_noticia(url,  fecha_publicacion,titulo, categoria, contenido, medio_url):
+  query= f"INSERT INTO Noticias (url,fecha_publicacion,titulo,categoria,contenido,medio_url) VALUES ('{url}', '{fecha_publicacion}', '{titulo}', '{categoria}', '{contenido}', '{medio_url}')"
   cur.execute(query)
   conn.commit()
 

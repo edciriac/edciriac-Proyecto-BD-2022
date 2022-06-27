@@ -15,6 +15,7 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
 import insert_manual_mariadb
+from custom_requests import get_medio_by_url
 
 #Formatear las fechas
 def format_date(date):
@@ -25,6 +26,7 @@ client = MongoClient("localhost", port=27017)
 db=client.info133_project
 session = HTMLSession()
 
+MEDIO_URL = "https://www.diarioaloslagos.cl"
 ## URL "SEED" para hacer el crawling
 URL_SEED = "https://www.diarioloslagos.cl/categorias/noticias/regionales/page/"
 ## Analizar ("to parse") el contenido
@@ -35,7 +37,6 @@ xpath_title="//div//h1"
 xpath_date="//meta[@property='article:published_time']//@content"
 xpath_text="//div[@class='entry-content clearfix']//p"
 xpath_categoria = ""
-id_medio = 1
 
 urls = []
 for i in range(1,3):
@@ -124,5 +125,5 @@ for url in urls:
         content = content.strip()
         text=text+" "+content
 
-    insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, id_medio)
+    insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
 conn.close()

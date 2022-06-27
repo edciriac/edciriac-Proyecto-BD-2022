@@ -25,6 +25,7 @@ client = MongoClient("localhost", port=27017)
 db=client.info133_project
 session = HTMLSession()
 
+MEDIO_URL = "https://www.elrepuertero.cl"
 ## URL "SEED" para hacer el crawling
 URL_SEED = "https://www.elrepuertero.cl/economia"
 ## Analizar ("to parse") el contenido
@@ -35,7 +36,6 @@ xpath_title="//div//h1"
 xpath_date="//meta[@property='article:published_time']//@content"
 xpath_text="//div[@class='content content-node']//p"
 xpath_categoria = "//div[@class='terms terms-top']/ul/li[1]/a"
-id_medio = 2
 
 urls = []
 for i in range(1,3):
@@ -124,5 +124,5 @@ for url in urls:
         content = content.strip()
         text=text+" "+content
 
-    insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, id_medio)
+    insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
 conn.close()
