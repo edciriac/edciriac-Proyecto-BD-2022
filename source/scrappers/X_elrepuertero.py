@@ -21,9 +21,6 @@ from config import *
 def format_date(date):
     return(date.split("T")[0])
 
-#Conexión a Mongo
-client = MongoClient("localhost", port=27017)
-db=client.info133_project
 session = HTMLSession()
 
 MEDIO_URL = "https://www.elrepuertero.cl"
@@ -70,7 +67,6 @@ for i in range(1,3):
 def format_date(date):
         return(date.split("T")[0])
 
-session = HTMLSession()
 
 #Conectarse a Mongo para listar las URLs que escrapear
 # client = MongoClient("localhost", port=27017)
