@@ -15,6 +15,7 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
 import insert_manual_mariadb
+from config import *
 
 #Formatear las fechas
 def format_date(date):
@@ -74,10 +75,6 @@ session = HTMLSession()
 #Conectarse a Mongo para listar las URLs que escrapear
 # client = MongoClient("localhost", port=27017)
 # db=client.info133_2022
-
-db_user = "user" # Nombre del user del mariadb
-db_password = "password" # Contraseña del user
-db_name = "project" # Nombre del database a que vamos a conectarnos
 
 # Conectarse a MariaDB para guardar los datos escrapeados
 try:

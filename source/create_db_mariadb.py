@@ -3,17 +3,14 @@ import datetime
 import mariadb
 import sys
 import os
+from config import *
 
-db_user = "user" # Nombre del user del mariadb
-db_password = "password" # Contraseña del user
-# El database de este nombre hay que existir para que este script funcione
-#
 # NOTA: Por si la ejecución retorna el error de "Acces denied for user...", corre esto en mariadb:
 # GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
-# El database_name es igual que lo que tienes abajo y username lo que tienes arriba
-db_name = "project" # Nombre del database a que vamos a conectarnos
+# El database_name es igual que lo que tienes abajo y username lo que tienes en el archivo config
 
 try:
+    # Los variables existen en el archivo config
     conn = mariadb.connect(
         user=db_user,
         password=db_password,

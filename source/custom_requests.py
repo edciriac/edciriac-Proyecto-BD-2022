@@ -1,15 +1,15 @@
 import mariadb
 import sys
+from config import *
 
 # Conectarse a MariaDB para guardar los datos escrapeados
 try:
     conn = mariadb.connect(
-        user="user",
-        password="password",
+        user=db_user,
+        password=db_password,
         host="localhost",
         port=3306,
-        database="project"
-
+        database=db_name
     )
 except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
