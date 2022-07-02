@@ -34,10 +34,10 @@ xpath_url="//div[@class = 'col-md-5 col-5 m-0 px-3 py-2']//a/@href"
 ## Para scraping
 xpath_title="//div//h1"
 xpath_date="//div[@id ='printableArea']//small"
-xpath_text="//div[@class='entry-content clearfix']//p"
+xpath_text="//div[@class='col-12 col-md-12 ck-content']//p"
 xpath_categoria = ""
 
-urls = ['https://www.diariodepuertomontt.cl/noticia/actualidad/2022/06/bajas-temperaturas-congelan-redes-de-agua-potable-en-futaleufu']
+urls = ['https://www.diariodepuertomontt.cl/noticia/actualidad/2022/07/industria-del-salmon-avanza-en-pos-de-la-equidad-de-genero']
 for i in range(0,0):
     seed = URL_SEED+str(i)
     print(seed)
@@ -128,10 +128,6 @@ for url in urls:
         content = html.unescape(content)
         content = content.strip()
         text=text+" "+content
-    print(title)
-    print(date)
-    print(categoria)
-    print(text)
 
-    # insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
+    insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
 conn.close()
