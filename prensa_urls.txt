@@ -1,12 +1,12 @@
-www.ellanquihue.cl          #HAY QUE PAGAR  
-www.diariodepuertomontt.cl  #HECHO
-www.elrepuertero.cl         #HECHO
-www.puertomonttonline.cl    #
-www.datossur.cl             #
-www.diarioloslagos.cl       #HECHO
-www.diariochiloe.cl/
-www.australosorno.cl
-www.diariodeosorno.cl
+www.ellanquihue.cl          # NO FUNCIONA, HAY QUE PAGAR  
+www.diariodepuertomontt.cl  # HECHO
+www.elrepuertero.cl         # HECHO
+www.puertomonttonline.cl    # No funciona (Ya no existe)
+www.datossur.cl             # Funciona pero es un poco raro y usa php
+www.diarioloslagos.cl       # HECHO
+www.diariochiloe.cl/        # Funciona
+www.australosorno.cl        # No funciona, hay q suscribirse
+www.diariodeosorno.cl       # Funciona
 www.elvacanudo.cl
 www.centralnoticia.cl
 www.paislobo.cl
@@ -14,7 +14,7 @@ www.laestrellachiloe.cl
 www.elinsular.cl
 www.noticiaschiloe.cl
 www.eha.cl
-www.diariopuertovaras.cl
-www.elcalbucano.cl
-www.elhuemul.cl
-www.laopiniondechiloe.cl
+www.diariopuertovaras.cl    # Funciona
+www.elcalbucano.cl          # Funciona
+www.elhuemul.cl             # Funciona
+www.laopiniondechiloe.cl    # Funciona
