@@ -38,14 +38,11 @@ xpath_text="//div[@class='col-12 col-md-12 ck-content']//p"
 xpath_categoria = ""
 
 urls = ['https://www.diariodepuertomontt.cl/noticia/actualidad/2022/07/industria-del-salmon-avanza-en-pos-de-la-equidad-de-genero']
-for i in range(0,0):
+for i in range(0,3):
     seed = URL_SEED+str(i)
-    print(seed)
     response = session.get(seed,headers=headers)
-    print(response)
     all_urls = response.html.xpath(xpath_url)
     all_urls = list(map(lambda url: MEDIO_URL + url, all_urls))
-    print(all_urls)
 
     # Usar este para solo crawl los primeros 3 urls
     for i in range(1,4):
