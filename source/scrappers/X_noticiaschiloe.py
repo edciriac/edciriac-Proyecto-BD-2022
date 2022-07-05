@@ -36,10 +36,10 @@ xpath_date="//div[@class='mh-content']//a"
 xpath_text="//div[@class='mh-content']//p"
 xpath_categoria = ""
 
-urls = []#['https://www.noticiaschiloe.cl/2022/diputados-de-oposicin-acusan-perdonazo-en-nueva-poltica-migratoria-de-boric-no-ha-tramitado-20-000-rdenes-de-expulsin-y-contrato-de-7-aviones-comerciales/060115512']
+urls = ['https://www.noticiaschiloe.cl/2022/diputados-de-oposicin-acusan-perdonazo-en-nueva-poltica-migratoria-de-boric-no-ha-tramitado-20-000-rdenes-de-expulsin-y-contrato-de-7-aviones-comerciales/060115512']
 
 # Loop las páginas
-for i in range(0,1):
+for i in range(0,0):
     seed = URL_SEED+f"page/{i}" 
     print(seed)
     response = session.get(seed,headers=headers)
@@ -73,9 +73,14 @@ for i in range(0,1):
 # Comprueba esto con el comando "locale -a" en terminal (Al menos esto funciona con mac)
 locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')
 
-# Formatear las fechas, desde texto como: junio 27, 2022
+# Formatear las fechas, desde texto como: Miércoles, 1 Junio, 2022 a las 11:42
 def format_date(date):
-    return(datetime.strptime(date, '%B %d, %Y').strftime('%Y-%m-%d'))
+    date = date.split(", ", maxsplit = 1)[1]
+    print(date)
+    date = date.split("a las")[0]
+    date.strip()
+    print(date)
+    return(datetime.strptime(date, '%d %B, %Y').strftime('%Y-%m-%d'))
 
 # Conectarse a MariaDB para guardar los datos escrapeados
 try:
