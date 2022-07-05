@@ -7,14 +7,14 @@ www.diarioloslagos.cl       # HECHO
 www.diariochiloe.cl/        # Funciona
 www.australosorno.cl        # No funciona, hay q suscribirse
 www.diariodeosorno.cl       # Funciona
-www.elvacanudo.cl
-www.centralnoticia.cl
-www.paislobo.cl
-www.laestrellachiloe.cl
-www.elinsular.cl
-www.noticiaschiloe.cl
-www.eha.cl
+www.elvacanudo.cl           # Funciona, (Tradicional, usa "?page=1")
+www.centralnoticia.cl       # Funciona, infinite scroll with "Load more"
+www.paislobo.cl             # Funciona 
+www.laestrellachiloe.cl     # No funciona, hay q suscribirse
+www.elinsular.cl            # Funciona (tradicional, usa "pages")
+www.noticiaschiloe.cl       # Funciona (tradicional usa "pages")
+www.eha.cl                  # Funciona
 www.diariopuertovaras.cl    # Funciona
 www.elcalbucano.cl          # Funciona
 www.elhuemul.cl             # Funciona
-www.laopiniondechiloe.cl    # Funciona
+www.laopiniondechiloe.cl    # HECHO
