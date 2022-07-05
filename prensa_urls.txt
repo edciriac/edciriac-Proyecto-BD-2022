@@ -11,10 +11,10 @@ www.elvacanudo.cl           # Funciona, (Tradicional, usa "?page=1")
 www.centralnoticia.cl       # Funciona, infinite scroll with "Load more"
 www.paislobo.cl             # Funciona 
 www.laestrellachiloe.cl     # No funciona, hay q suscribirse
-www.elinsular.cl            # Funciona (tradicional, usa "pages")
+www.elinsular.cl            # Funciona, infinite scroll
 www.noticiaschiloe.cl       # Funciona (tradicional usa "pages")
 www.eha.cl                  # Funciona
 www.diariopuertovaras.cl    # Funciona
-www.elcalbucano.cl          # Funciona
+www.elcalbucano.cl          # Funciona, infinite scroll
 www.elhuemul.cl             # Funciona
 www.laopiniondechiloe.cl    # HECHO

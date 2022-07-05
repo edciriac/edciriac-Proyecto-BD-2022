@@ -10,10 +10,9 @@ goto :choice
 :add_all_commit_push
 echo "Comiteando todo"
 git add --all
-set /p msg="Commit message:"
+set /p msg="Commit message: "
 echo %msg%
 git commit -m "%msg%"
-pause
 exit
 
 :stop_script
