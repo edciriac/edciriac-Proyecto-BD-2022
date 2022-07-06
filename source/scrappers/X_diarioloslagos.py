@@ -2,7 +2,6 @@ from multiprocessing.dummy import Array
 from wsgiref import headers
 from numpy import insert, source
 from requests_html import HTMLSession
-from pymongo import MongoClient
 import time
 from nav_config import USER_AGENT_LIST, headers
 import w3lib.html
@@ -29,11 +28,6 @@ URL_SEED = "https://www.diarioloslagos.cl/categorias/noticias/regionales/page/"
 ## Analizar ("to parse") el contenido
 xpath_url="//article/a/@href"
 
-## Para scraping
-xpath_title="//div//h1"
-xpath_date="//meta[@property='article:published_time']//@content"
-xpath_text="//div[@class='entry-content clearfix']//p"
-xpath_categoria = ""
 
 urls = []
 for i in range(1,3):
@@ -64,6 +58,12 @@ for i in range(1,3):
 
 #---------------------------------------------------------
 # Parte scraping:
+
+xpath_title="//div//h1"
+xpath_date="//meta[@property='article:published_time']//@content"
+xpath_text="//div[@class='entry-content clearfix']//p"
+xpath_categoria = ""
+
 def format_date(date):
         return(date.split("T")[0])
 

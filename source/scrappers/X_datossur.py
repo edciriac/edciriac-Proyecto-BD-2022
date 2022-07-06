@@ -4,7 +4,6 @@ from multiprocessing.dummy import Array
 from wsgiref import headers
 from numpy import insert, source
 from requests_html import HTMLSession
-from pymongo import MongoClient
 import time
 from nav_config import USER_AGENT_LIST, headers
 import w3lib.html
@@ -31,13 +30,6 @@ URL_SEED = "https://www.datossur.cl/index.php/ds/noticiasds.html"
 ## Analizar ("to parse") el contenido
 xpath_url="//div[@class = 'items-row']"
 
-## Para scraping
-xpath_title="//div//h1"
-xpath_date="//div[@id ='printableArea']//small"
-xpath_text="//div[@class='col-12 col-md-12 ck-content']//p"
-xpath_categoria = ""
-
-# 
 urls = []
 for i in range(0,1):
     # Las paginas tienen 17 noticias por presa y se controla esto con el parametro de start. O sea, una pagina contiene 17 noticias.
@@ -71,6 +63,11 @@ for i in range(0,1):
 
 #---------------------------------------------------------
 # Parte scraping:
+
+xpath_title="//div//h1"
+xpath_date="//div[@id ='printableArea']//small"
+xpath_text="//div[@class='col-12 col-md-12 ck-content']//p"
+xpath_categoria = ""
 
 # Puede que esto retorne un error si no tienes el locale de es_ES.UTF-8 instalado a tu computador.
 # Comprueba esto con el comando "locale -a" en terminal (Al menos esto funciona con mac)

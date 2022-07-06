@@ -4,7 +4,6 @@ from multiprocessing.dummy import Array
 from wsgiref import headers
 from numpy import insert, source
 from requests_html import HTMLSession
-from pymongo import MongoClient
 import time
 from nav_config import USER_AGENT_LIST, headers
 import w3lib.html
@@ -31,11 +30,6 @@ URL_SEED = "https://www.diariodepuertomontt.cl/noticias/actualidad/"
 ## Analizar ("to parse") el contenido
 xpath_url="//div[@class = 'col-md-5 col-5 m-0 px-3 py-2']//a/@href"
 
-## Para scraping
-xpath_title="//div//h1"
-xpath_date="//div[@id ='printableArea']//small"
-xpath_text="//div[@class='col-12 col-md-12 ck-content']//p"
-xpath_categoria = ""
 
 urls = ['https://www.diariodepuertomontt.cl/noticia/actualidad/2022/07/industria-del-salmon-avanza-en-pos-de-la-equidad-de-genero']
 for i in range(0,3):
@@ -65,6 +59,11 @@ for i in range(0,3):
 
 #---------------------------------------------------------
 # Parte scraping:
+
+xpath_title="//div//h1"
+xpath_date="//div[@id ='printableArea']//small"
+xpath_text="//div[@class='col-12 col-md-12 ck-content']//p"
+xpath_categoria = ""
 
 # Puede que esto retorne un error si no tienes el locale de es_ES.UTF-8 instalado a tu computador.
 # Comprueba esto con el comando "locale -a" en terminal (Al menos esto funciona con mac)

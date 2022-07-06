@@ -2,7 +2,6 @@ from multiprocessing.dummy import Array
 from wsgiref import headers
 from numpy import insert, source
 from requests_html import HTMLSession
-from pymongo import MongoClient
 import time
 from nav_config import USER_AGENT_LIST, headers
 import w3lib.html
@@ -11,13 +10,14 @@ import mariadb
 import sys
 import os
 from datetime import datetime
-import locale 
+import locale
 
 # Importar de la carpeta source
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
-import insert_manual_mariadb
+from utils import filter_persons
+from insert_manual_mariadb import insert_noticia
 from config import *
 
 session = HTMLSession()
@@ -28,18 +28,12 @@ URL_SEED = "https://www.noticiaschiloe.cl/category/politica-y-economia"
 ## Analizar ("to parse") el contenido
 xpath_url="//h3[@class='entry-title mh-loop-title']/a/@href" # 
 
-## Para scraping
-# xpath_title="//meta[@property='og:title']//@content"
-xpath_title="//div[@class='mh-content']//h1"
-# xpath_date="//meta[@property='article:published_time']//@content"
-xpath_date="//div[@class='mh-content']//a"
-xpath_text="//div[@class='entry-content mh-clearfix']//p"
-xpath_categoria = ""
 
-urls = ['https://www.noticiaschiloe.cl/2022/diputados-de-oposicin-acusan-perdonazo-en-nueva-poltica-migratoria-de-boric-no-ha-tramitado-20-000-rdenes-de-expulsin-y-contrato-de-7-aviones-comerciales/060115512']
+
+urls = []
 
 # Loop las páginas
-for i in range(0,0):
+for i in range(0,3):
     seed = URL_SEED+f"page/{i}" 
     print(seed)
     response = session.get(seed,headers=headers)
@@ -68,6 +62,11 @@ for i in range(0,0):
 
 #---------------------------------------------------------
 # Parte scraping:
+
+xpath_title="//div[@class='mh-content']//h1"
+xpath_date="//div[@class='mh-content']//a"
+xpath_text="//div[@class='entry-content mh-clearfix']//p"
+xpath_categoria = ""
 
 # Puede que esto retorne un error si no tienes el locale de es_ES.UTF-8 instalado a tu computador.
 # Comprueba esto con el comando "locale -a" en terminal (Al menos esto funciona con mac)
@@ -130,5 +129,5 @@ for url in urls:
         text = text.strip()
         content = content +" "+text
 
-    insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
+    insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
 conn.close()
