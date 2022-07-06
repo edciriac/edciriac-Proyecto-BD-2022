@@ -20,7 +20,9 @@ cur = conn.cursor()
 
 
 def insert_dueno(nombre, fecha, categoria):
-  raise NotImplementedError()
+  query= f"INSERT INTO Duenos (nombre, fecha_cargo, categoria) VALUES ('{nombre}', '{fecha}', '{categoria}')"
+  cur.execute(query)
+  conn.commit()
 
 def insert_medio(nombre, url, ciudad, idioma):
   query= f"INSERT INTO Medios (nombre, url, ciudad, idioma) VALUES ('{nombre}', '{url}', '{ciudad}', '{idioma}')"
@@ -52,5 +54,10 @@ def insert_persona(nombre, noticia_url):
 
 def insert_noticia_persona_rel(persona_nombre, noticia_url):
   query= f"INSERT INTO NoticiaPersonaRelacion (persona_nombre,noticia_url) VALUES ('{persona_nombre}', '{noticia_url}')"
+  cur.execute(query)
+  conn.commit()
+
+def insert_rel_dueno_medio(dueno_nombre, medio_url):
+  query= f"INSERT INTO MedioDuenoRelacion (dueno_nombre,medio_url) VALUES ('{dueno_nombre}', '{medio_url}')"
   cur.execute(query)
   conn.commit()

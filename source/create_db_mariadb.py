@@ -2,7 +2,7 @@ import mariadb
 import sys
 import os
 from config import *
-from insert_manual_mariadb import insert_medio
+from insert_manual_mariadb import *
 
 # NOTA: Por si la ejecución retorna el error de "Acces denied for user...", corre esto en mariadb:
 # GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
@@ -43,3 +43,15 @@ insert_medio( "El Repuertero", "https://www.elrepuertero.cl","Puerto Montt", "es
 insert_medio("Diario De Puerto Montt", "https://www.diariodepuertomontt.cl", "Puerto Montt", "español")
 insert_medio("La Opinión de Chiloé", "https://laopiniondechiloe.cl", "Chiloé", "español")
 insert_medio("Noticias Chiloé", "https://www.noticiaschiloe.cl", "Chiloé", "español")
+
+insert_dueno("Verticecom Producciones EIRL", "2017-06-09", "Empresa")
+insert_dueno("COMUNICACIONES VELASQUEZ SPA.", "2020-02-29", "Empresa")
+insert_dueno("ASESORIAS E INVERSIONES COMUNIDADES CIUDADANA S A", "2008-05-12 21", "Empresa")
+insert_dueno("La Opinion De Chiloe", "2016-06-21", "Empresa")
+insert_dueno("Nicolas Herve Fernandez", "2015-06-16", "Persona Natural")
+
+insert_rel_dueno_medio("Verticecom Producciones EIRL", "https://www.diariodepuertomontt.cl")
+insert_rel_dueno_medio("COMUNICACIONES VELASQUEZ SPA.", "https://www.diarioloslagos.cl")
+insert_rel_dueno_medio("ASESORIAS E INVERSIONES COMUNIDADES CIUDADANA S A", "https://www.elrepuertero.cl")
+insert_rel_dueno_medio("La Opinion De Chiloe", "https://laopiniondechiloe.cl")
+insert_rel_dueno_medio("Nicolas Herve Fernandez", "https://www.noticiaschiloe.cl")

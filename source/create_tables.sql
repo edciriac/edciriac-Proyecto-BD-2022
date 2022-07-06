@@ -13,19 +13,18 @@ CREATE TABLE IF NOT EXISTS Medios(
   idioma VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Duenos(
-  id INT AUTO_INCREMENT PRIMARY KEY, 
-  nombre VARCHAR(100) NOT NULL,
+CREATE TABLE IF NOT EXISTS Duenos( 
+  nombre VARCHAR(100) NOT NULL PRIMARY KEY,
   fecha_cargo DATE NOT NULL,
   categoria VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS MedioDuenoRelacion(
   medio_url VARCHAR(255) NOT NULL,
-  dueno_id INT NOT NULL,
+  dueno_nombre VARCHAR(100) NOT NULL,
   FOREIGN KEY (medio_url) REFERENCES Medios(url),
-  FOREIGN KEY (dueno_id) REFERENCES Duenos(id),
-  UNIQUE (medio_url, dueno_id)
+  FOREIGN KEY (dueno_nombre) REFERENCES Duenos(nombre),
+  UNIQUE (medio_url, dueno_nombre)
 );
 
 CREATE TABLE IF NOT EXISTS Noticias(
