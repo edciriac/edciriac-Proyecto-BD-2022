@@ -33,7 +33,7 @@ xpath_url="//h3[@class='entry-title mh-loop-title']/a/@href" #
 xpath_title="//div[@class='mh-content']//h1"
 # xpath_date="//meta[@property='article:published_time']//@content"
 xpath_date="//div[@class='mh-content']//a"
-xpath_text="//div[@class='mh-content']//p"
+xpath_text="//div[@class='entry-content mh-clearfix']//p"
 xpath_categoria = ""
 
 urls = ['https://www.noticiaschiloe.cl/2022/diputados-de-oposicin-acusan-perdonazo-en-nueva-poltica-migratoria-de-boric-no-ha-tramitado-20-000-rdenes-de-expulsin-y-contrato-de-7-aviones-comerciales/060115512']
@@ -78,8 +78,7 @@ def format_date(date):
     date = date.split(", ", maxsplit = 1)[1]
     print(date)
     date = date.split("a las")[0]
-    date.strip()
-    print(date)
+    date = date.strip()
     return(datetime.strptime(date, '%d %B, %Y').strftime('%Y-%m-%d'))
 
 # Conectarse a MariaDB para guardar los datos escrapeados

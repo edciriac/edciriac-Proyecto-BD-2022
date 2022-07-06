@@ -34,3 +34,6 @@ with open(sql_file_path, 'r') as f:
   for command in sqlCommands:
     print("Ejecutando el comando: \n" + command)
     cursor.execute(command)
+
+#Comando para Windows:
+#os.system('cmd /k "python insert_medios.py"') 
