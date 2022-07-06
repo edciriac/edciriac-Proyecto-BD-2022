@@ -32,10 +32,23 @@ def insert_noticia(url,  fecha_publicacion,titulo, categoria, contenido, medio_u
   cur.execute(query)
   conn.commit()
 
-def insert_persona(nombre, noticia_id, wikipedia_url = None, fecha_nac = None, popularidad = None, profesion = None, nacionalidad = None):
-  query= f"INSERT INTO Personas (nombre, wikipedia_url, fecha_nacimiento, popularidad, profesion, nacionalidad) VALUES ('{nombre}', '{wikipedia_url}', '{fecha_nac}', '{popularidad}', '{profesion}', '{nacionalidad}')"
-  cur.execute(query)
-  conn.commit()
+def insert_persona_rich(nombre, noticia_url, wikipedia_url, fecha_nac, popularidad, profesion, nacionalidad):
+  query= f"INSERT INTO Personas (nombre,wikipedia_url,fecha_nacimiento,popularidad,profesion,nacionalidad) VALUES ('{nombre}', '{wikipedia_url}', '{fecha_nac}', {popularidad}, '{profesion}', '{nacionalidad}')"
+  try:
+    cur.execute(query)
+    conn.commit()
+  except mariadb.IntegrityError:
+    print(f"Person with name {nombre} already exists, only adding relation to noticia")
+  insert_noticia_persona_rel(nombre, noticia_url)
+
+def insert_persona(nombre, noticia_url):
+  query= f"INSERT INTO Personas (nombre) VALUES ('{nombre}')"
+  try:
+    cur.execute(query)
+    conn.commit()
+  except mariadb.IntegrityError:
+    print(f"Person with name {nombre} already exists, only adding relation to noticia")
+  insert_noticia_persona_rel(nombre, noticia_url)
 
 def insert_noticia_persona_rel(persona_nombre, noticia_url):
   query= f"INSERT INTO NoticiaPersonaRelacion (persona_nombre,noticia_url) VALUES ('{persona_nombre}', '{noticia_url}')"
