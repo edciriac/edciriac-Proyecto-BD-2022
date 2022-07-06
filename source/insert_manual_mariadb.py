@@ -32,8 +32,12 @@ def insert_noticia(url,  fecha_publicacion,titulo, categoria, contenido, medio_u
   cur.execute(query)
   conn.commit()
 
-def insert_citado(nombre, noticia_ids, wikipedia_url = None):
-  raise NotImplementedError()
+def insert_persona(nombre, noticia_id, wikipedia_url = None, fecha_nac = None, popularidad = None, profesion = None, nacionalidad = None):
+  query= f"INSERT INTO Personas (nombre, wikipedia_url, fecha_nacimiento, popularidad, profesion, nacionalidad) VALUES ('{nombre}', '{wikipedia_url}', '{fecha_nac}', '{popularidad}', '{profesion}', '{nacionalidad}')"
+  cur.execute(query)
+  conn.commit()
 
-def insert_notoriedad(url, fecha_nac, popularidad, profesion, nacionalidad):
-  raise NotImplementedError()
+def insert_noticia_persona_rel(persona_nombre, noticia_url):
+  query= f"INSERT INTO NoticiaPersonaRelacion (persona_nombre,noticia_url) VALUES ('{persona_nombre}', '{noticia_url}')"
+  cur.execute(query)
+  conn.commit()
