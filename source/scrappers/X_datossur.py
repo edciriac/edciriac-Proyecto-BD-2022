@@ -15,7 +15,8 @@ import os
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
-import insert_manual_mariadb
+from utils import filter_persons
+from insert_manual_mariadb import *
 from config import *
 
 #Formatear las fechas
@@ -133,5 +134,9 @@ for url in urls:
     print(text)
 
 
-    # insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
+    insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
+     # Insertar las personas mencionadas en la noticia
+    personas = filter_persons(content)
+    for per in personas:
+      insert_persona(per, url)
 conn.close()

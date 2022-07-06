@@ -17,7 +17,7 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
 from utils import filter_persons
-from insert_manual_mariadb import insert_noticia
+from insert_manual_mariadb import *
 from config import *
 
 session = HTMLSession()
@@ -33,8 +33,8 @@ xpath_url="//h3[@class='entry-title mh-loop-title']/a/@href" #
 urls = []
 
 # Loop las páginas
-for i in range(0,3):
-    seed = URL_SEED+f"page/{i}" 
+for i in range(0,2):
+    seed = URL_SEED+f"/page/{i+1}" 
     print(seed)
     response = session.get(seed,headers=headers)
     all_urls = response.html.xpath(xpath_url)
@@ -128,6 +128,11 @@ for url in urls:
         text = html.unescape(text)
         text = text.strip()
         content = content +" "+text
+    
 
     insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
+    # Insertar las personas mencionadas en la noticia
+    personas = filter_persons(content)
+    for per in personas:
+      insert_persona(per, url)
 conn.close()

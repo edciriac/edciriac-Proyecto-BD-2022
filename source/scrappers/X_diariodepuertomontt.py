@@ -15,7 +15,8 @@ import os
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
-import insert_manual_mariadb
+from utils import filter_persons
+from insert_manual_mariadb import *
 from config import *
 
 #Formatear las fechas
@@ -32,7 +33,7 @@ xpath_url="//div[@class = 'col-md-5 col-5 m-0 px-3 py-2']//a/@href"
 
 
 urls = ['https://www.diariodepuertomontt.cl/noticia/actualidad/2022/07/industria-del-salmon-avanza-en-pos-de-la-equidad-de-genero']
-for i in range(0,3):
+for i in range(0,2):
     seed = URL_SEED+str(i)
     response = session.get(seed,headers=headers)
     all_urls = response.html.xpath(xpath_url)
@@ -125,5 +126,9 @@ for url in urls:
         content = content.strip()
         text=text+" "+content
 
-    insert_manual_mariadb.insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
+    insert_noticia(url,  date, title, categoria, text, MEDIO_URL)
+    # Insertar las personas mencionadas en la noticia
+    personas = filter_persons(content)
+    for per in personas:
+      insert_persona(per, url)
 conn.close()
