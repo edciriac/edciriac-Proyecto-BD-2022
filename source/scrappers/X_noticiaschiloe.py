@@ -33,7 +33,7 @@ xpath_url="//h3[@class='entry-title mh-loop-title']/a/@href" #
 urls = []
 
 # Loop las páginas
-for i in range(0,3):
+for i in range(0,1):
     seed = URL_SEED+f"page/{i}" 
     print(seed)
     response = session.get(seed,headers=headers)
