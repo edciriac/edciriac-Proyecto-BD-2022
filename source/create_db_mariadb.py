@@ -1,9 +1,8 @@
-from insert_manual_mongodb import *
-import datetime
 import mariadb
 import sys
 import os
 from config import *
+from insert_manual_mariadb import insert_medio
 
 # NOTA: Por si la ejecución retorna el error de "Acces denied for user...", corre esto en mariadb:
 # GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
@@ -37,3 +36,10 @@ with open(sql_file_path, 'r') as f:
 
 #Comando para Windows:
 #os.system('cmd /k "python insert_medios.py"') 
+
+# INSERTAR LOS MEDIOS DESPUES DE CREAR LAS TABLAS
+insert_medio("Diario Los Lagos","https://www.diarioloslagos.cl" , "Puerto Montt", "español")
+insert_medio( "El Repuertero", "https://www.elrepuertero.cl","Puerto Montt", "español")
+insert_medio("Diario De Puerto Montt", "https://www.diariodepuertomontt.cl", "Puerto Montt", "español")
+insert_medio("La Opinión de Chiloé", "https://laopiniondechiloe.cl", "Chiloé", "español")
+insert_medio("Noticias Chiloé", "https://www.noticiaschiloe.cl", "Chiloé", "español")
