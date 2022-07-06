@@ -16,7 +16,7 @@ except mariadb.Error as e:
     sys.exit(1)
 
 def get_medio_by_url(url):
-  cur = conn.cursor()
+  cur = conn.cursor() 
   query = f"SELECT * FROM Medios WHERE url='{url}'"
   cur.execute(query)
   result = cur.next()
@@ -25,3 +25,16 @@ def get_medio_by_url(url):
   cur.close()
   if (result == None): raise Exception(f"No Medio with url '{url}' were found")
   return result
+
+def noticias_por_prensa():
+    cur = conn.cursor()
+    query = "select count(*),medio_url, nombre from noticias join Medios on noticias.medio_url = medios.url Group by nombre;"
+    cur.execute(query)
+    result = cur.fetchall()
+    # print(result)
+    # Puede que ocurran bugs si no cerramos el cursor despues de la consulta
+    cur.close()
+    return result
+
+get_medio_by_url("https://www.noticiaschiloe.cl")
+noticias_por_prensa()
