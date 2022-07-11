@@ -43,6 +43,7 @@ insert_medio( "El Repuertero", "https://www.elrepuertero.cl","Puerto Montt", "es
 insert_medio("Diario De Puerto Montt", "https://www.diariodepuertomontt.cl", "Puerto Montt", "español")
 insert_medio("La Opinión de Chiloé", "https://laopiniondechiloe.cl", "Chiloé", "español")
 insert_medio("Noticias Chiloé", "https://www.noticiaschiloe.cl", "Chiloé", "español")
+insert_medio("El Heraldo Austral", "https://www.eha.cl", "Puerto Varas", "español")
 
 insert_dueno("Verticecom Producciones EIRL", "2017-06-09", "Empresa")
 insert_dueno("COMUNICACIONES VELASQUEZ SPA.", "2020-02-29", "Empresa")

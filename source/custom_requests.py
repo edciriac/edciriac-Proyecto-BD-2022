@@ -28,7 +28,7 @@ def get_medio_by_url(url):
 
 def noticias_por_prensa():
     cur = conn.cursor()
-    query = "select count(*),medio_url, nombre from noticias join Medios on noticias.medio_url = medios.url Group by nombre;"
+    query = "select count(*),medio_url, nombre from noticias join medios on noticias.medio_url = medios.url group by nombre;"
     cur.execute(query)
     result = cur.fetchall()
     # print(result)
@@ -37,4 +37,4 @@ def noticias_por_prensa():
     return result
 
 get_medio_by_url("https://www.noticiaschiloe.cl")
-noticias_por_prensa()
+print(noticias_por_prensa())
