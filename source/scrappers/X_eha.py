@@ -16,8 +16,9 @@ import locale
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
-import insert_manual_mariadb
+from insert_manual_mariadb import *
 from config import *
+from utils import filter_persons
 
 session = HTMLSession()
 
@@ -132,5 +133,9 @@ for url in urls:
 
     print(content)
     print(text)
-    insert_manual_mariadb.insert_noticia(url,  date, title, categoria, content, MEDIO_URL)
+    insert_noticia(url,  date, title, categoria, content, MEDIO_URL)
+
+    personas = filter_persons(content)
+    for per in personas:
+      insert_persona(per, url)    
 conn.close()

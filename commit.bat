@@ -13,9 +13,8 @@ git add --all
 set /p msg="Commit message: "
 echo %msg%
 git commit -m "%msg%"
-exit
+
 
 :stop_script
 echo "Saliendo sin commits"
 pause
-exit
